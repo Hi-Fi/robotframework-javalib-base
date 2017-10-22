@@ -54,6 +54,31 @@ public class RobotLogger implements Log {
         }
         this.debug("Enabled logger for: " + logName + " with level: " + getLevel());
     }
+    
+    public void log(Object log, String logLevel) {
+        switch (Level.valueOf(logLevel.toUpperCase())) {
+        case TRACE:
+            this.trace(log);
+            break;
+        case DEBUG:
+            this.debug(log);
+            break;
+        case INFO:
+            this.info(log);
+            break;
+        case WARN:
+            this.warn(log);
+            break;
+        case ERROR:
+            this.debug(log);
+            break;
+        case FATAL:
+            this.fatal(log);
+            break;
+        default:
+            break;
+        }
+    }
 
     public static void logHTML(Object log) {
         System.out.println("*HTML* " + log);
